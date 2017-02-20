@@ -5,15 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/black"
-    tools:context="com.example.kenny.kennydemo.MainActivity">
+
+    tools:context="ponkberry.hoandemo.MainActivity">
 
     <RelativeLayout
-        android:id="@+id/title_bar"
+        android:id="@+id/titlebar"
         android:layout_width="match_parent"
         android:layout_height="58dp"
-        android:background="@android:color/holo_blue_bright"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
+        android:background="@android:color/holo_blue_bright">
 
         <TextView
             android:layout_width="wrap_content"
@@ -27,7 +26,8 @@
         <ImageButton
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:background="@color/white"
+            android:background="@android:color/transparent"
+            android:src="@drawable/bt_style"
             android:layout_marginLeft="12dp"
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"/>
@@ -35,54 +35,50 @@
         <ImageButton
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:background="@color/white"
+            android:background="@drawable/bt_style_xml"
             android:layout_marginRight="12dp"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"/>
 
-        </RelativeLayout>
+    </RelativeLayout>
 
-        <LinearLayout
-            android:id="@+id/tool_bar"
-            android:layout_width="match_parent"
-            android:layout_height="58dp"
-            android:layout_alignParentBottom="true"
-            android:background="@android:color/holo_green_light"
-            >
+    <LinearLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:background="@android:color/holo_green_light">
 
-            <ImageButton
-                android:id="@+id/bt1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="6dp"
-                android:layout_weight="1"
-                android:background="@color/white"
-                />
+        <ImageButton
+            android:id="@+id/bt1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="6dp"
+            android:layout_weight="1"
+            android:background="@android:color/white"/>
 
-            <ImageButton
-                android:onClick="onClick"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="6dp"
-                android:layout_weight="1"
-                android:background="@color/white"
-                />
+        <ImageButton
+            android:id="@+id/bt2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="6dp"
+            android:layout_weight="1"
+            android:background="@android:color/white"/>
 
-            <ImageButton
-                android:id="@+id/bt3"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="6dp"
-                android:layout_weight="1"
-                android:background="@color/white"
-                />
-        </LinearLayout>
+        <ImageButton
+            android:id="@+id/bt3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="6dp"
+            android:layout_weight="1"
+            android:background="@android:color/white"/>
+    </LinearLayout>
 
     <ListView
-        android:layout_below="@id/title_bar"
-        android:layout_above="@id/tool_bar"
+        android:layout_above="@id/toolbar"
+        android:layout_below="@id/titlebar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"></ListView>
-
 </RelativeLayout>
