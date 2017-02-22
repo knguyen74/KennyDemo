@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:background="@android:color/black"
 
-    tools:context="ponkberry.hoandemo.MainActivity">
+    tools:context="com.example.kenny.kennydemo.MainActivity">
+    >
 
     <RelativeLayout
         android:id="@+id/titlebar"
@@ -33,6 +34,7 @@
             android:layout_alignParentLeft="true"/>
 
         <ImageButton
+            android:id="@+id/bt4"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="@drawable/bt_style_xml"

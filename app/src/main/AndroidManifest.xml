@@ -20,6 +20,10 @@
         <activity android:name=".ViewPagerActivity" />
         <activity android:name=".DialogActivity" />
         <activity android:name=".BaseActivity" />
+        <activity android:name=".ActivityB" />
+        <activity android:name=".ActivityC" />
+        <activity android:name=".ActivityA" />
+        <activity android:name=".ActivityD"></activity>
     </application>
 
 </manifest>
