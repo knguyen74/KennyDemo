@@ -29,6 +29,12 @@ public class MainActivity extends BaseActivity {
         //toActivity(DialogActivity.class);
     }
 
+    @OnClick(R.id.main_timer_bt)
+    public void buttonTimerClick(){
+        Intent intent = new Intent(this, TimerActivity.class);
+        startActivity(intent);
+        //toActivity(DialogActivity.class);
+    }
 
 
     @Override
