@@ -6,21 +6,29 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.kenny.kennydemo.util.UtilLog;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements View.OnTouchListener{
     private ImageButton bt1;
     private ImageButton bt3;
     private ImageButton bt4;
+    private GestureDetector mGestureDetector;
+
+    @BindView(R.id.f1)
+    FrameLayout f1;
 
     @OnClick(R.id.bt2)
     public void button2Click(){
@@ -43,6 +51,12 @@ public class MainActivity extends BaseActivity {
         //toActivity(DialogActivity.class);
     }
 
+    @OnClick(R.id.animator_bt)
+    public void buttonAnimatorClick(){
+        Intent intent = new Intent(this, AnimatorActivity.class);
+        startActivity(intent);
+        //toActivity(DialogActivity.class);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +65,8 @@ public class MainActivity extends BaseActivity {
         initialView();
         initialListener();
         ButterKnife.bind(this);
+        mGestureDetector=new GestureDetector(this,new SimpleGestureListener());
+        f1.setOnTouchListener(this);
     }
 
     private void initialView(){
@@ -129,5 +145,55 @@ public class MainActivity extends BaseActivity {
     protected void onStart() {
         toastShort("onStart");
         super.onStart();
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        return mGestureDetector.onTouchEvent(event);
+    }
+
+    private class SimpleGestureListener extends GestureDetector.SimpleOnGestureListener{
+        public boolean onDown(MotionEvent e){
+            UtilLog.logD("MyGesture","onDown");
+            //toastShort("onDown");
+            return true;
+        }
+        public void onShowPress(MotionEvent e){
+            UtilLog.logD("MyGesture","onShowPress");
+            //toastShort("onShowPress");
+        }
+        public void onLongPress(MotionEvent e){
+            UtilLog.logD("MyGesture","onLongPress");
+            toastShort("onLongPress");
+        }
+        public boolean onSingleTapUp(MotionEvent e){
+            UtilLog.logD("MyGesture","onSingleTapUp");
+            toastShort("onSingleTapUp");
+            return true;
+        }
+        public boolean onSingleTapConfirmed(MotionEvent e)
+        {
+            UtilLog.logD("MyGesture","onSingleTapConfirmed");
+            toastShort("onSingleTapConfirmed");
+            return true;
+        }
+        public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX,float distanceY){
+            UtilLog.logD("MyGesture","onScroll:"+(e2.getX()-e1.getX())+" "+distanceX);
+            toastShort("onScroll");
+            return true;
+        }
+        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY){
+            toastShort("onFling");
+            return true;
+        }
+        public boolean onDoubleTap(MotionEvent e){
+            toastShort("onDoubleTap");
+            return true;
+        }
+        public boolean onDoubleTapEvent(MotionEvent e){
+            toastShort("onDoubleTapEvent");
+            return true;
+        }
+
     }
 }

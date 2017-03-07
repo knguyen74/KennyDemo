@@ -24,4 +24,8 @@ public class BaseActivity extends AppCompatActivity {
     public void toastShort(String content) {
         Toast.makeText(this,content,Toast.LENGTH_SHORT).show();
     }
+
+    public void UtilLog() {
+
+    }
 }
