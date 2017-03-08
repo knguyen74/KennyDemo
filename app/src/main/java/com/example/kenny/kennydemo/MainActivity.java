@@ -20,6 +20,7 @@ import com.example.kenny.kennydemo.util.UtilLog;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import dialog.Quiz4;
 
 public class MainActivity extends BaseActivity implements View.OnTouchListener{
     private ImageButton bt1;
@@ -51,6 +52,38 @@ public class MainActivity extends BaseActivity implements View.OnTouchListener{
         //toActivity(DialogActivity.class);
     }
 
+    @OnClick(R.id.Quiz4)
+    public void Quiz4(){
+        final Quiz4 dialog = new Quiz4(this, new Quiz4.ICustomDialogEventListener() {
+            @Override
+            public void onClickListener() {
+                Intent intent = new Intent(MainActivity.this, DialogActivity.class);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onClick2Listener() {
+                Intent intent = new Intent(MainActivity.this, ListViewActivity.class);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onClickCancel() {
+                Intent intent = new Intent(MainActivity.this,ViewPagerActivity.class);
+                intent.putExtra("key","value");
+                Bundle bundle = new Bundle();
+                bundle.putInt("Integer", 12345);
+                Book book = new Book();
+                book.setName("Android");
+                book.setAuthor("Laura");
+                bundle.putSerializable("book", book);
+                intent.putExtras(bundle);
+                startActivityForResult(intent, 1);
+            }
+        });
+        dialog.show();
+    }
+
     @OnClick(R.id.animator_bt)
     public void buttonAnimatorClick(){
         Intent intent = new Intent(this, AnimatorActivity.class);
@@ -75,7 +108,6 @@ public class MainActivity extends BaseActivity implements View.OnTouchListener{
         bt4 = (ImageButton) findViewById(R.id.bt4);
 
     }
-
     private void initialListener(){
         bt1.setOnClickListener(new View.OnClickListener() {
             @Override
